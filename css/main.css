@@ -193,6 +193,137 @@ hr {
     background-color: white;
 }
 
+.right-skills {
+  background-color: #eee;
+  height: 300px;
+	padding: 40px 60px;
+}
+
+@keyframes rubybar {
+  from {width: 0%;}
+  to {width: 35%;}
+}
+
+.ruby-bar {
+    border-style: solid;
+		border-color: #00aeaf;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.ruby-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: rubybar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.ruby span {
+    background-color: #00aeaf;
+}
+
+@keyframes htmllbar {
+  from {width: 0%;}
+  to {width: 65%;}
+}
+
+.htmll-bar {
+    border-style: solid;
+		border-color: #00aeaf;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.htmll-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: htmllbar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.htmll span {
+    background-color: #00aeaf;
+}
+
+@keyframes cssbar {
+  from {width: 0%;}
+  to {width: 60%;}
+}
+
+.css-bar {
+    border-style: solid;
+		border-color: #00aeaf;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.css-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: cssbar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.css span {
+    background-color: #00aeaf;
+}
+
+.paralax {
+	background-image: url(../img/parallax.jpg);
+	min-height: 250px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.col-md-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.about-bg {
+	background-color: #eee;
+	color: #ad4c42;
+	font-family:sans-serif;
+	font-weight: lighter;
+	font-size: 13px;
+}
+
+.about-content {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px 0;
+}
+
 /* Mobile Nav */
 .mobile-nav {
 	position: fixed;
