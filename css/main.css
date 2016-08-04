@@ -92,24 +92,105 @@ hr {
 	padding: 40px 60px;
 }
 
-.photoshop {
+.info {
 	height: 56px;
+	margin-top: 12px;
 }
 
-.progress {
-	width: 80%;
-	float: right;
-	margin-top: 13px;
-	background-color: transparent;
-	border-style: solid;
-	border-color: white;
-	border-width: 1px;
-	border-radius: 25px;
-	height: 30px;
+@keyframes photoshopbar {
+  from {width: 0%;}
+  to {width: 100%;}
 }
 
-.progress-bar {
-	background-color: white;
+.photoshop-bar {
+    border-style: solid;
+		border-color: white;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.photoshop-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: photoshopbar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.photoshop span {
+    background-color: white;
+}
+
+@keyframes illustratorbar {
+  from {width: 0%;}
+  to {width: 85%;}
+}
+
+.illustrator-bar {
+    border-style: solid;
+		border-color: white;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.illustrator-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: illustratorbar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.illustrator span {
+    background-color: white;
+}
+
+@keyframes indesignbar {
+  from {width: 0%;}
+  to {width: 90%;}
+}
+
+.indesign-bar {
+    border-style: solid;
+		border-color: white;
+    height: 30px;
+    width: 75%;
+    border-radius: 25px;
+    border-width: 1px;
+		display: inline-block;
+		margin-left: 15px;
+		vertical-align: middle;
+}
+
+.indesign-bar span {
+    display: inline-block;
+    height: 100%;
+    border-radius: 23px;
+    transition: width .4s ease-in-out;
+    animation-name: indesignbar;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;;
+    animation-fill-mode: forwards;;
+}
+
+.indesign span {
+    background-color: white;
 }
 
 /* Mobile Nav */
