@@ -110,15 +110,15 @@ export default function Home() {
         {/* Sobre */}
         <section
           id="sobre"
-          className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-4 py-24 sm:px-6 md:grid-cols-[1fr_1.6fr]"
+          className="mx-auto grid max-w-6xl scroll-mt-16 gap-10 px-4 py-24 sm:px-6 md:grid-cols-[200px_1fr] md:gap-16"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/diego-crovador.jpg"
             alt={`Foto de ${site.name}`}
-            width={642}
-            height={642}
-            className="mx-auto aspect-square w-full max-w-sm self-start rounded-full object-cover ring-8 ring-secondary"
+            width={200}
+            height={200}
+            className="size-[200px] self-start rounded-full object-cover ring-6 ring-secondary"
           />
           <div>
             <SectionTitle eyebrow="Sobre mim" title={`${site.name}, ${site.role}`} />
