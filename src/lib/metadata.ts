@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { profile, site } from "@/lib/site";
 import { cases, counterpart } from "@/lib/cases";
+import { asset } from "@/lib/asset";
 import { casePath, homePath, type Lang } from "@/lib/i18n";
 
-const base = { icons: { icon: "/logo.svg" } };
+// Endereço público do site, usado nos links de idioma alternativo para buscadores
+const base: Metadata = {
+  metadataBase: new URL("https://diegocrovador.github.io"),
+  icons: { icon: asset("/logo.svg") },
+};
 
 export function homeMetadata(lang: Lang): Metadata {
   return {
     ...base,
     title: `${profile.name} · ${profile.role}`,
     description: site[lang].description,
-    alternates: { languages: { "pt-BR": homePath("pt"), en: homePath("en") } },
+    alternates: { languages: { "pt-BR": asset(homePath("pt")), en: asset(homePath("en")) } },
   };
 }
 
@@ -24,6 +29,6 @@ export function caseMetadata(lang: Lang, slug: string): Metadata {
     ...base,
     title: `${c.title} · ${profile.name}`,
     description: c.subtitle,
-    alternates: { languages: { "pt-BR": paths.pt, en: paths.en } },
+    alternates: { languages: { "pt-BR": asset(paths.pt), en: asset(paths.en) } },
   };
 }

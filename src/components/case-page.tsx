@@ -5,6 +5,7 @@ import { ContactSection, SiteFooter } from "@/components/site-footer";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { cases, counterpart, type Block, type CaseStudy } from "@/lib/cases";
+import { asset } from "@/lib/asset";
 import { casePath, homePath, sectionPath, ui, type Lang } from "@/lib/i18n";
 
 export function CasePage({ lang, study }: { lang: Lang; study: CaseStudy }) {
@@ -104,7 +105,7 @@ function ContentBlock({ block, imageLabel }: { block: Block; imageLabel: string 
     <figure className="my-10">
       {block.src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={block.src} alt={block.alt} className="w-full rounded-xl border" />
+        <img src={asset(block.src)} alt={block.alt} className="w-full rounded-xl border" />
       ) : (
         <div className="grid aspect-video place-items-center rounded-xl border-2 border-dashed border-primary/30 bg-secondary text-center">
           <span className="flex flex-col items-center gap-2 text-sm font-semibold text-primary-strong">

@@ -16,6 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { profile, site } from "@/lib/site";
 import { cases } from "@/lib/cases";
+import { asset } from "@/lib/asset";
 import { casePath, homePath, ui, type Lang } from "@/lib/i18n";
 
 const ctaLg = "h-12 px-6 text-base font-semibold";
@@ -113,7 +114,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={profile.photo}
+            src={asset(profile.photo)}
             alt={`${t.photoOf} ${profile.name}`}
             width={200}
             height={200}
