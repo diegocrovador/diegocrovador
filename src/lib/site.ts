@@ -3,7 +3,7 @@ import type { Lang } from "@/lib/i18n";
 
 export const profile = {
   name: "Diego Crovador",
-  role: "UX Specialist",
+  role: "Product Designer",
   email: "diego.crovador@gmail.com",
   linkedin: "https://br.linkedin.com/in/diegocrovador",
   photo: "/diego-crovador.jpg",
@@ -22,7 +22,7 @@ export const site: Record<
   }
 > = {
   pt: {
-    description: "Portfólio de Diego Crovador, UX Specialist.",
+    description: "Portfólio de Diego Crovador, Product Designer.",
     headline: "Se o problema ainda não cabe em um briefing, é aí que eu começo.",
     intro:
       "Como Product Designer, meu papel é eliminar o gap entre o problema e a solução. Entendo e dou forma ao que você precisa.",
@@ -55,7 +55,7 @@ export const site: Record<
     },
   },
   en: {
-    description: "Portfolio of Diego Crovador, UX Specialist.",
+    description: "Portfolio of Diego Crovador, Product Designer.",
     headline: "If the problem doesn't fit in a briefing yet, that's where I start.",
     intro:
       "As a Product Designer, my role is to close the gap between the problem and the solution. I understand and give shape to what you need.",
