@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { LangToggle } from "@/components/lang-toggle";
+import { MobileMenu } from "@/components/mobile-menu";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { profile } from "@/lib/site";
@@ -30,7 +31,7 @@ export function SiteHeader({ lang, hrefs }: { lang: Lang; hrefs: Record<Lang, st
             aria-label={`${profile.name}, ${t.home}`}
           >
             <Logo className="h-7 w-auto text-primary" />
-            <span className="font-bold tracking-tight">{profile.name}</span>
+            <span className="hidden font-bold tracking-tight whitespace-nowrap min-[360px]:inline">{profile.name}</span>
           </Link>
           <nav aria-label={t.mainNav} className="hidden gap-1 md:flex">
             {nav.map((item) => (
@@ -43,14 +44,18 @@ export function SiteHeader({ lang, hrefs }: { lang: Lang; hrefs: Record<Lang, st
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <LangToggle lang={lang} hrefs={hrefs} />
             <Link
               href={sectionPath(lang, "contato")}
-              className={cn(buttonVariants(), "hidden h-9 px-4 font-semibold sm:inline-flex")}
+              className={cn(buttonVariants(), "hidden h-9 px-4 font-semibold md:inline-flex")}
             >
               {t.cta}
             </Link>
+            <MobileMenu
+              lang={lang}
+              items={nav.map((item) => ({ href: sectionPath(lang, item.id), label: item.label }))}
+            />
           </div>
         </div>
       </header>

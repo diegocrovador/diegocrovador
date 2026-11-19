@@ -36,6 +36,10 @@ export const ui = {
     nextCase: "Próximo case",
     image: "Imagem",
     langSwitch: "Idioma",
+    menu: "Menu",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    contactMe: "Fale comigo",
   },
   en: {
     skip: "Skip to content",
@@ -62,5 +66,9 @@ export const ui = {
     nextCase: "Next case",
     image: "Image",
     langSwitch: "Language",
+    menu: "Menu",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    contactMe: "Get in touch",
   },
 } satisfies Record<Lang, unknown>;
