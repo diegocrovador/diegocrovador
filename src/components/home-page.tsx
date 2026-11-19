@@ -29,10 +29,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       <main id="conteudo" tabIndex={-1} className="outline-none">
         {/* Apresentação */}
         <section className="mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 md:pt-28 md:pb-32">
-          <Badge variant="secondary" className="h-7 px-3 text-sm font-semibold text-primary-strong">
-            {profile.role}
-          </Badge>
-          <h1 className="mt-6 max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-balance sm:text-5xl md:text-6xl">
+          <h1 className="max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-balance sm:text-5xl md:text-6xl">
             {s.headline}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{s.intro}</p>
