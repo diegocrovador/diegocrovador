@@ -10,6 +10,8 @@ const basePath = process.env.BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   output: "export",
   basePath,
+  // Gera /pagina/index.html: é o formato que o GitHub Pages serve melhor
+  trailingSlash: true,
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
