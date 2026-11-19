@@ -10,8 +10,8 @@ export function SiteHeader({ lang, hrefs }: { lang: Lang; hrefs: Record<Lang, st
   const t = ui[lang];
   const nav = [
     { id: "cases", label: t.nav.cases },
-    { id: "processo", label: t.nav.process },
     { id: "sobre", label: t.nav.about },
+    { id: "processo", label: t.nav.process },
     { id: "contato", label: t.nav.contact },
   ];
   return (

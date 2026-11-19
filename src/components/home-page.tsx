@@ -109,12 +109,6 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
         </section>
 
-        <ProcessTimeline lang={lang} />
-
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <hr className="border-border" />
-        </div>
-
         {/* Sobre */}
         <section
           id="sobre"
@@ -137,6 +131,12 @@ export function HomePage({ lang }: { lang: Lang }) {
             ))}
           </div>
         </section>
+
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <hr className="border-border" />
+        </div>
+
+        <ProcessTimeline lang={lang} />
 
         <ContactSection lang={lang} />
       </main>
