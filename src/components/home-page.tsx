@@ -13,33 +13,34 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { site } from "@/lib/site";
+import { profile, site } from "@/lib/site";
 import { cases } from "@/lib/cases";
+import { casePath, homePath, ui, type Lang } from "@/lib/i18n";
 
 const ctaLg = "h-12 px-6 text-base font-semibold";
 
-export default function Home() {
+export function HomePage({ lang }: { lang: Lang }) {
+  const t = ui[lang];
+  const s = site[lang];
   return (
     <>
-      <SiteHeader />
-      <main id="conteudo">
+      <SiteHeader lang={lang} hrefs={{ pt: homePath("pt"), en: homePath("en") }} />
+      <main id="conteudo" tabIndex={-1} className="outline-none">
         {/* Apresentação */}
         <section className="mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 md:pt-28 md:pb-32">
           <Badge variant="secondary" className="h-7 px-3 text-sm font-semibold text-primary-strong">
-            {site.role}
+            {profile.role}
           </Badge>
           <h1 className="mt-6 max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-balance sm:text-5xl md:text-6xl">
-            {site.headline}
+            {s.headline}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {site.intro}
-          </p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{s.intro}</p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a href="#cases" className={cn(buttonVariants(), ctaLg)}>
-              Ver cases <ArrowRight data-icon="inline-end" />
+              {t.viewCases} <ArrowRight data-icon="inline-end" />
             </a>
             <a href="#contato" className={cn(buttonVariants({ variant: "outline" }), ctaLg)}>
-              Entrar em contato
+              {t.getInTouch}
             </a>
           </div>
         </section>
@@ -47,9 +48,9 @@ export default function Home() {
         {/* Cases */}
         <section id="cases" className="scroll-mt-16 bg-muted/60 py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionTitle eyebrow="Trabalhos" title="Cases selecionados" />
+            <SectionTitle eyebrow={t.work} title={t.selectedCases} />
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {cases.map((c) => (
+              {cases[lang].map((c) => (
                 <Card key={c.slug} className="relative transition-shadow hover:shadow-lg">
                   <div
                     aria-hidden="true"
@@ -64,19 +65,19 @@ export default function Home() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-wrap gap-2">
-                    {c.tags.map((t) => (
-                      <Badge key={t} variant="outline">
-                        {t}
+                    {c.tags.map((tag) => (
+                      <Badge key={tag} variant="outline">
+                        {tag}
                       </Badge>
                     ))}
                   </CardContent>
                   <CardFooter className="mt-auto justify-between gap-4">
                     <span className="text-sm font-semibold text-primary-strong">{c.highlight}</span>
                     <Link
-                      href={`/cases/${c.slug}`}
+                      href={casePath(lang, c.slug)}
                       className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold underline-offset-4 after:absolute after:inset-0 hover:underline"
                     >
-                      Ler case <ArrowUpRight className="size-4" aria-hidden="true" />
+                      {t.readCase} <ArrowUpRight className="size-4" aria-hidden="true" />
                       <span className="sr-only">: {c.title}</span>
                     </Link>
                   </CardFooter>
@@ -95,11 +96,11 @@ export default function Home() {
                     variant="secondary"
                     className="mb-2 h-6 px-2.5 font-semibold text-primary-strong"
                   >
-                    Em construção
+                    {t.inProgress}
                   </Badge>
-                  <CardTitle className="text-xl font-bold">{site.caseInProgress.title}</CardTitle>
+                  <CardTitle className="text-xl font-bold">{s.caseInProgress.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
-                    {site.caseInProgress.summary}
+                    {s.caseInProgress.summary}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -114,15 +115,15 @@ export default function Home() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/diego-crovador.jpg"
-            alt={`Foto de ${site.name}`}
+            src={profile.photo}
+            alt={`${t.photoOf} ${profile.name}`}
             width={200}
             height={200}
             className="size-[200px] self-start rounded-full object-cover ring-6 ring-secondary"
           />
           <div>
-            <SectionTitle eyebrow="Sobre mim" title={`${site.name}, ${site.role}`} />
-            {site.about.map((text) => (
+            <SectionTitle eyebrow={t.aboutMe} title={`${profile.name}, ${profile.role}`} />
+            {s.about.map((text) => (
               <p key={text.slice(0, 20)} className="mt-6 text-lg leading-relaxed text-muted-foreground">
                 {text}
               </p>
@@ -130,7 +131,7 @@ export default function Home() {
           </div>
         </section>
 
-        <ContactSection />
+        <ContactSection lang={lang} />
       </main>
       <SiteFooter />
     </>
