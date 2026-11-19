@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Hammer } from "lucide-react";
-import { Logo } from "@/components/logo";
 import { SiteHeader } from "@/components/site-header";
 import { ContactSection, SiteFooter } from "@/components/site-footer";
 import { buttonVariants } from "@/components/ui/button";
@@ -113,12 +112,14 @@ export default function Home() {
           id="sobre"
           className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-4 py-24 sm:px-6 md:grid-cols-[1fr_1.6fr]"
         >
-          <div
-            aria-hidden="true"
-            className="grid aspect-square place-items-center self-start rounded-2xl bg-secondary"
-          >
-            <Logo className="w-1/3 text-primary" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/diego-crovador.jpg"
+            alt={`Foto de ${site.name}`}
+            width={642}
+            height={642}
+            className="mx-auto aspect-square w-full max-w-sm self-start rounded-full object-cover ring-8 ring-secondary"
+          />
           <div>
             <SectionTitle eyebrow="Sobre mim" title={`${site.name}, ${site.role}`} />
             {site.about.map((text) => (
