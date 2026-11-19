@@ -39,10 +39,10 @@ export const site: Record<
     description: "Portfolio of Diego Crovador, UX Specialist.",
     headline: "Simplifying complexity is what I strive for.",
     intro:
-      "I love working on complex projects, the kind where even the brief is hard to write.",
+      "I love working on complex projects, the kind where even the briefing is hard to write.",
     about: [
       "Throughout my career, I've worked with very different kinds of people, and from the start one thing has always been clear: understanding how people work is essential. Everyone has their own process and their own way of dealing with problems and goals. Getting the most out of every interaction and turning it into collaboration is a defining part of how I work. This dynamic is essential when building a product. Whether you're in design, technology or business, the success of your delivery also depends on how you receive the product and how you prepare it for the next stage. Both require interaction between people with different backgrounds and goals, and this is exactly where I've seen many projects and products get lost.",
-      "I try to spend half of my effort aligning the understanding of the project's problem and goal, and the other half looking not for the best solution, but for the one with the highest chance of success given the moment and context. I love working on complex projects, the kind where even the brief is hard to write. Simplifying that complexity is what I strive for.",
+      "I try to spend half of my effort aligning the understanding of the project's problem and goal, and the other half looking not for the best solution, but for the one with the highest chance of success given the moment and context. I love working on complex projects, the kind where even the briefing is hard to write. Simplifying that complexity is what I strive for.",
     ],
     contactTitle: "Need to solve a problem? Let's talk!",
     caseInProgress: {
