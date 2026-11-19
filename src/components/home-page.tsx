@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Hammer } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
+import { ProcessTimeline } from "@/components/process-timeline";
 import { ContactSection, SiteFooter } from "@/components/site-footer";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -107,6 +108,12 @@ export function HomePage({ lang }: { lang: Lang }) {
             </div>
           </div>
         </section>
+
+        <ProcessTimeline lang={lang} />
+
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <hr className="border-border" />
+        </div>
 
         {/* Sobre */}
         <section
