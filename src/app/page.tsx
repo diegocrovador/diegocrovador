@@ -1,5 +1,8 @@
-import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Hammer } from "lucide-react";
 import { Logo } from "@/components/logo";
+import { SiteHeader } from "@/components/site-header";
+import { ContactSection, SiteFooter } from "@/components/site-footer";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,54 +13,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
-
-const nav = [
-  { href: "#cases", label: "Cases" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#processo", label: "Processo" },
-  { href: "#contato", label: "Contato" },
-];
+import { cases } from "@/lib/cases";
 
 const ctaLg = "h-12 px-6 text-base font-semibold";
 
 export default function Home() {
   return (
     <>
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:ring-2 focus:ring-ring"
-      >
-        Pular para o conteúdo
-      </a>
-
-      <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <a href="#" className="flex items-center gap-3" aria-label={`${site.name}, início`}>
-            <Logo className="h-7 w-auto text-primary" />
-            <span className="font-bold tracking-tight">{site.name}</span>
-          </a>
-          <nav aria-label="Principal" className="hidden gap-1 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(buttonVariants({ variant: "ghost" }), "h-9 px-3 text-[0.95rem]")}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <a href="#contato" className={cn(buttonVariants(), "h-9 px-4 font-semibold")}>
-            Vamos conversar
-          </a>
-        </div>
-      </header>
-
+      <SiteHeader />
       <main id="conteudo">
-        {/* Hero */}
+        {/* Apresentação */}
         <section className="mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 md:pt-28 md:pb-32">
           <Badge variant="secondary" className="h-7 px-3 text-sm font-semibold text-primary-strong">
             {site.role}
@@ -83,18 +50,18 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionTitle eyebrow="Trabalhos" title="Cases selecionados" />
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {site.cases.map((c, i) => (
-                <Card key={c.title} className="group transition-shadow hover:shadow-lg">
+              {cases.map((c) => (
+                <Card key={c.slug} className="relative transition-shadow hover:shadow-lg">
                   <div
                     aria-hidden="true"
                     className="mx-4 grid aspect-[4/3] place-items-center rounded-lg bg-secondary text-primary/30"
                   >
-                    <span className="text-6xl font-bold">0{i + 1}</span>
+                    <span className="text-6xl font-bold">{c.number}</span>
                   </div>
                   <CardHeader>
                     <CardTitle className="text-xl font-bold">{c.title}</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
-                      {c.summary}
+                      {c.subtitle}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-wrap gap-2">
@@ -104,99 +71,67 @@ export default function Home() {
                       </Badge>
                     ))}
                   </CardContent>
-                  <CardFooter className="justify-between">
-                    <span className="text-sm font-semibold text-primary-strong">{c.result}</span>
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline"
+                  <CardFooter className="mt-auto justify-between gap-4">
+                    <span className="text-sm font-semibold text-primary-strong">{c.highlight}</span>
+                    <Link
+                      href={`/cases/${c.slug}`}
+                      className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold underline-offset-4 after:absolute after:inset-0 hover:underline"
                     >
                       Ler case <ArrowUpRight className="size-4" aria-hidden="true" />
                       <span className="sr-only">: {c.title}</span>
-                    </a>
+                    </Link>
                   </CardFooter>
                 </Card>
               ))}
+
+              <Card className="bg-transparent shadow-none ring-0 outline-1 outline-border outline-dashed">
+                <div
+                  aria-hidden="true"
+                  className="mx-4 grid aspect-[4/3] place-items-center rounded-lg border-2 border-dashed border-primary/30"
+                >
+                  <Hammer className="size-12 text-primary/50" />
+                </div>
+                <CardHeader>
+                  <Badge
+                    variant="secondary"
+                    className="mb-2 h-6 px-2.5 font-semibold text-primary-strong"
+                  >
+                    Em construção
+                  </Badge>
+                  <CardTitle className="text-xl font-bold">{site.caseInProgress.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {site.caseInProgress.summary}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         </section>
 
         {/* Sobre */}
-        <section id="sobre" className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-4 py-24 sm:px-6 md:grid-cols-[1fr_1.4fr]">
+        <section
+          id="sobre"
+          className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-4 py-24 sm:px-6 md:grid-cols-[1fr_1.6fr]"
+        >
           <div
             aria-hidden="true"
-            className="grid aspect-square place-items-center rounded-2xl bg-secondary"
+            className="grid aspect-square place-items-center self-start rounded-2xl bg-secondary"
           >
             <Logo className="w-1/3 text-primary" />
           </div>
-          <div className="self-center">
-            <SectionTitle eyebrow="Sobre" title="Olá! Prazer em te conhecer." />
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Espaço para a sua história: formação, empresas em que trabalhou, áreas em que
-              tem mais experiência e o que te motiva no design de experiência.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Ferramentas e competências: Figma, pesquisa com usuários, arquitetura da
-              informação, prototipação, testes de usabilidade, design systems.
-            </p>
-          </div>
-        </section>
-
-        <Separator className="mx-auto max-w-6xl" />
-
-        {/* Processo */}
-        <section id="processo" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-24 sm:px-6">
-          <SectionTitle eyebrow="Como trabalho" title="Processo" />
-          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {site.process.map((p, i) => (
-              <li key={p.step} className="rounded-xl border p-6">
-                <span className="grid size-10 place-items-center rounded-full bg-primary font-bold text-primary-foreground">
-                  {i + 1}
-                </span>
-                <h3 className="mt-5 text-lg font-bold">{p.step}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{p.text}</p>
-              </li>
+          <div>
+            <SectionTitle eyebrow="Sobre mim" title={`${site.name}, ${site.role}`} />
+            {site.about.map((text) => (
+              <p key={text.slice(0, 20)} className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                {text}
+              </p>
             ))}
-          </ol>
-        </section>
-
-        {/* Contato */}
-        <section id="contato" className="scroll-mt-16 bg-foreground py-24 text-background">
-          <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-              Tem um projeto em mente? Vamos conversar.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-background/75">
-              Estou disponível para novos projetos, consultorias e oportunidades.
-            </p>
-            <a href={`mailto:${site.email}`} className={cn(buttonVariants(), ctaLg, "mt-10")}>
-              <Mail data-icon="inline-start" /> {site.email}
-            </a>
-            <ul className="mt-10 flex flex-wrap justify-center gap-6">
-              {site.links.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold underline-offset-4 hover:underline"
-                  >
-                    {l.label} <ArrowUpRight className="size-4" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
-      </main>
 
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground sm:px-6">
-          <span className="flex items-center gap-2">
-            <Logo className="h-4 w-auto text-primary" /> © {new Date().getFullYear()} {site.name}
-          </span>
-          <span>Feito com shadcn/ui</span>
-        </div>
-      </footer>
+        <ContactSection />
+      </main>
+      <SiteFooter />
     </>
   );
 }
